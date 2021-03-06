@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.ScreenUtils;
 
 public class Drop extends ApplicationAdapter {
     private Texture dropImage;
@@ -43,6 +44,16 @@ public class Drop extends ApplicationAdapter {
         bucket.width = 64;
         bucket.height = 64;
 
+    }
+
+    @Override
+    public void render() {
+        ScreenUtils.clear(0, 0, 0.2f, 1);
+        camera.update();
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+        batch.draw(bucketImage, bucket.x, bucket.y);
+        batch.end();
     }
 
 }
